@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
         String[] toyNames = ToyBox.getToyNames();
 
         for (String toyName : toyNames) {
-            mToysListTextView.append(toyName + "\n");
+            mToysListTextView.append(toyName + "\n\n\n");
         }
     }
 }
