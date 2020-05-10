@@ -1,81 +1,55 @@
-<?xml version="1.0" encoding="utf-8"?><!--
-  Copyright (C) 2016 The Android Open Source Project
-
-  Licensed under the Apache License, Version 2.0 (the "License");
-  you may not use this file except in compliance with the License.
-  You may obtain a copy of the License at
-
-       http://www.apache.org/licenses/LICENSE-2.0
-
-  Unless required by applicable law or agreed to in writing, software
-  distributed under the License is distributed on an "AS IS" BASIS,
-  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-  See the License for the specific language governing permissions and
-  limitations under the License.
--->
-
-<!--TODO (1) Change the ConstraintLayout to a LinearLayout-->
-<!--TODO (2) Make the orientation vertical-->
-<!--TODO (3) Give left, right, and top padding of 16dp-->
-<!--TODO (4) Remove the line that declares the id, we don't need it-->
-<!--TODO (5) Remove the xmlns:app declaration, we don't need that anymore-->
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:paddingStart="@dimen/double_padding"
-    android:paddingLeft="@dimen/double_padding"
-    android:paddingTop="@dimen/double_padding"
-    android:paddingEnd="@dimen/double_padding"
-    android:paddingRight="@dimen/double_padding">
+    android:fitsSystemWindows="true">
 
-    <!--TODO (6) Delete this TextView-->
-    <!--TODO (7) Add an EditText-->
-    <!--TODO (8) Give the EditText an id of @+id/et_search_box-->
-    <!--TODO (9) Set the text size to 22sp-->
-    <!--TODO (10) Set the width to match_parent and the height to wrap_content-->
-    <!--TODO (11) Provide a hint telling the user to enter a query and then click search-->
-    <EditText
-        android:id="@+id/et_search_box"
+    <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="@string/github_query_hint"
-        android:textSize="22sp" />
+        android:elevation="0dp"
+        app:layout_behavior="android.support.design.widget.AppBarLayout$Behavior">
 
-    <!--TODO (12) Add a TextView-->
-    <!--TODO (13) Give the TextView an id of @+id/tv_url_display-->
-    <!--TODO (14) Set the text size to 22sp-->
-    <!--TODO (15) Set the width to wrap_content and the height to wrap_content-->
-    <!--TODO (16) Give the TextView a top margin of 8dp-->
-    <!--TODO (17) Set the text to tell the user their search URL will show up here when they click search-->
-    <TextView
-        android:id="@+id/tv_url_display"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/default_margin"
-        android:text="@string/github_query_text"
-        android:textSize="22sp" />
-
-    <!--TODO (18) Add a ScrollView-->
-    <!--TODO (19) Set the width to match_parent and the height to wrap_content-->
-    <!--TODO (20) Set the top margin to 16dp-->
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/double_padding">
-
-        <!--TODO (21) Within the ScrollView, add a TextView-->
-        <!--TODO (22) Give the TextView an id of @+id/tv_github_search_results_json-->
-        <!--TODO (23) Set the text size to 18sp-->
-        <!--TODO (24) Set the height and width to wrap_content-->
-        <!--TODO (25) Set the text to something that tells the user to make a search-->
-        <TextView
-            android:id="@+id/tv_github_search_results_json"
-            android:layout_width="wrap_content"
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/tool_bar"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/github_query_result_text"
-            android:textSize="18sp" />
+            android:background="?attr/colorPrimary" />
 
-    </ScrollView>
+    </android.support.design.widget.AppBarLayout>
 
-</LinearLayout>
+    <!--<com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/loadingMainActivityAnimation"
+        android:layout_width="108dp"
+        android:layout_height="108dp"
+        android:layout_gravity="center"
+        android:visibility="gone"
+        app:lottie_fileName="loopReduced.json"
+        app:lottie_loop="true" />-->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        android:orientation="vertical"
+        app:layout_behavior="android.support.design.widget.AppBarLayout$ScrollingViewBehavior">
+
+        <android.support.design.widget.TabLayout
+            android:id="@+id/tab_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="?attr/colorPrimary"
+            android:minHeight="48dp"
+            app:layout_constraintTop_toBottomOf="parent"
+            app:tabGravity="fill"
+            app:tabMode="fixed" />
+
+        <android.support.v4.view.ViewPager
+            android:id="@+id/pager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="fill_vertical" />
+
+    </LinearLayout>
+</android.support.design.widget.CoordinatorLayout>
